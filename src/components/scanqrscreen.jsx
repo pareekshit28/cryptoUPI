@@ -10,7 +10,9 @@ const ScanQr = () => {
         <QrReader
         onResult={(result, error) => {
             if (!!result) {
-                navigate('/payout', {state: {vpa : result?.text}})
+                const vpa = result?.text.split('=')[1].split('&')[0]
+                console.log(vpa)
+                navigate('/payout', {state: {vpa : vpa}})
             }
             
             if (!!error) {

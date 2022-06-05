@@ -2,7 +2,6 @@ import Nav from "./nav"
 import {useLocation, useNavigate} from 'react-router-dom';
 import { useState } from "react";
 import { ethers } from 'ethers';
-const base64 = require('base-64')
 const axios = require('axios').default
 
 const Payout = () => {
@@ -35,34 +34,12 @@ const Payout = () => {
         }
         signer.sendTransaction(tx).then((transaction)=>{
             console.log("Payment Successful", transaction)
-            const username = 'rzp_test_4QoYiedPNEZFo4'
-            const pass = 'IWkGMBiMFPaxRiVsg4Zhisti'
-            const base = base64.encode(username + ":" + pass)
-
-            axios.post("/v1/payouts", {
-                "account_number": "2323230076368081",
-                "amount": amount*100,
-                "currency": "INR",
-                "mode": "UPI",
-                "purpose": "payout",
-                "fund_account": {
-                    "account_type": "vpa",
-                    "vpa": {
-                        "address": vpa
-                    },
-                    "contact": {
-                        "name": vpa.substring(0,10),
-                    }
-                },
-            },{
-                    headers: {
-                    'Authorization': `Basic ${base}`,
-                    }
-                },)
-                .then(response => {
-                    console.log(response.data)
-                    navigate('/success', {state: {vpa : vpa, id: response.data.id, amount: amount, hash:transaction.hash}})
-                })
+            axios.post("https://crypto-upi.herokuapp.com/pay", {
+                    "amount": amount,
+                    "vpa": vpa
+                }).then(response=>{
+                    navigate('/success', {state:{hash: transaction.hash, id: response.data.id, amount: amount, vpa: vpa}})
+                }).catch((e)=>console.log("Error", e))
             }).catch((e)=>{
                 console.log("Error", e)
             })
