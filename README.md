@@ -1,6 +1,29 @@
-# Getting Started with Create React App
+# CryptoUPI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Use crypto 🪙 to pay to merchants via UPI 🏦.
+
+## Tech Stack
+
+- Frontend: React
+- Backend: Node Js
+- Payment Provider: RazorpayX Payout
+
+## Screenshots
+
+1) Connect Wallet
+![Connect Wallet](https://github.com/user-attachments/assets/8572774c-f488-4322-997b-976234f0f04b)
+
+2) Scan UPI QR
+   ![Scan UPI QR](https://github.com/user-attachments/assets/3954ee79-59b0-4be1-b72c-4481d252776e)
+
+3) UPI QR
+![UPI QR](https://github.com/user-attachments/assets/377a297a-99b8-4f0c-8bea-5419af0a8875)
+
+4) Enter Amount
+![Enter Amount](https://github.com/user-attachments/assets/5dfc885f-aeba-4f39-873a-054bbb859fd6)
+
+5) Payment Success
+   ![Success](https://github.com/user-attachments/assets/1c510bf1-f1a8-49df-8562-60ba07ad17a0)
 
 ## Available Scripts
 
